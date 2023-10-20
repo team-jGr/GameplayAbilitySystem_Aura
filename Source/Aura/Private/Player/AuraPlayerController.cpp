@@ -3,6 +3,7 @@
 
 #include "Player/AuraPlayerController.h"
 
+<<<<<<< HEAD
 #include "EnhancedInputSubsystems.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/LocalPlayer.h"
@@ -31,3 +32,5 @@ void AAuraPlayerController::BeginPlay()
 	InputModeData.SetHideCursorDuringCapture(false);
 	SetInputMode(InputModeData);
 }
+=======
+>>>>>>> 78cff1a834836931f240dd5ebb37f1e760438437
