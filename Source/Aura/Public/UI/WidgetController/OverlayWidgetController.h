@@ -47,13 +47,10 @@ public:
 
 	UPROPERTY(BlueprintAssignable, category = "GAS|Attributes")
 	FOnHealthChangedSignature OnHealthChanged;
-
 	UPROPERTY(BlueprintAssignable, category = "GAS|Attributes")
 	FOnMaxHealthChangedSignature OnMaxHealthChanged;
-
 	UPROPERTY(BlueprintAssignable, category = "GAS|Attributes")
 	FOnManaChangedSignature OnManaChanged;
-
 	UPROPERTY(BlueprintAssignable, category = "GAS|Attributes")
 	FOnMaxManaChangedSignature OnMaxManaChanged;
 
@@ -63,14 +60,6 @@ public:
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Widget Data")
 	TObjectPtr<UDataTable> MessageWidgetDataTable;
-
-	void HealthChanged(const FOnAttributeChangeData& Data) const;
-	
-	void MaxHealthChanged(const FOnAttributeChangeData& Data) const;
-
-	void ManaChanged(const FOnAttributeChangeData& Data) const;
-
-	void MaxManaChanged(const FOnAttributeChangeData& Data) const;
 
 	template<typename T>
 	T* GetDataTableRowByTag(UDataTable* DataTable, const FGameplayTag& Tag);
