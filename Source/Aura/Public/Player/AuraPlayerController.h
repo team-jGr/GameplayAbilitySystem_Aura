@@ -55,6 +55,7 @@ private:
 
 	/* Highlight Targets */
 	void CursorTrace();
+	FHitResult CursorHit;
 	IEnemyInterface* LastActor;
 	IEnemyInterface* ThisActor;
 
