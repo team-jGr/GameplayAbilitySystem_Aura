@@ -24,4 +24,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TSubclassOf<AAuraProjectile> ProjectileClass;
+
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Projectile")
+	void SpawnProjectile();
 };
