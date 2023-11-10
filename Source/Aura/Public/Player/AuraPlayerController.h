@@ -34,12 +34,19 @@ protected:
 
 private:
 	void Move(const FInputActionValue& InputActionValue);
+	void ShiftPressed() { bShiftKeyDown = true; };
+	void ShiftReleased() { bShiftKeyDown = false; };
 	
 	UPROPERTY(EditAnywhere, category="Input")
 	TObjectPtr<UInputMappingContext> AuraContext;
 
 	UPROPERTY(EditAnywhere, category="Input")
 	TObjectPtr<UInputAction> MoveAction;
+
+	UPROPERTY(EditAnywhere, category = "Input")
+	TObjectPtr<UInputAction> ShiftAction;
+
+	bool bShiftKeyDown = false;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UAuraInputConfig> InputConfig;
