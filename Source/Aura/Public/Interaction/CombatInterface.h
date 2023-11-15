@@ -31,6 +31,8 @@ public:
 
 	virtual FVector GetCombatSocketLocation();
 
+	virtual void Die() = 0;
+
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void UpdateWarpTarget(const FVector& TargetLocation);
 
