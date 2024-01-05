@@ -10,6 +10,7 @@
 #include "AbilitySystem/Data/CharacterClassInfo.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "Interaction/CombatInterface.h"
+#include "AuraAbilityTypes.h"
 
 struct AuraDamageStatics
 {
@@ -76,7 +77,11 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().BlockChanceDef, EvaluationParams, TargetBlockChance);
 	TargetBlockChance = FMath::Max<float>(0.f, TargetBlockChance);
 	const float BlockRoll = FMath::RandRange(1, 100);
+	
 	const bool bBlocked = (BlockRoll <= TargetBlockChance);
+
+	FGameplayEffectContextHandle EffectContextHandle = Spec.GetContext();
+	UAuraAbilitySystemLibrary::SetIsBlockedHit(EffectContextHandle, bBlocked);
 
 	// If block, halve damage	
 	if (bBlocked)
@@ -123,6 +128,8 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	// Crit Hit Resist reduces Crit Chance by a certain percentage
 	const float EffectCritChance = SourceCritChance - (TargetCritResist * CritResistCoefficient);
 	const bool bCritHit = FMath::RandRange(1, 100) < EffectCritChance;
+
+	UAuraAbilitySystemLibrary::SetIsCritialHit(EffectContextHandle, bCritHit);
 	
 	// Double damage plus a bonus if critical hit succeeds
 	Damage = bCritHit ? 2.f * Damage + SourceCritDamage : Damage;
